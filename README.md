@@ -1,16 +1,103 @@
-# React + Vite
+## BookCourier – Library-to-Home Delivery System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+BookCourier is a library delivery management system where users can request book pickup or delivery from their nearby libraries. The system helps students, researchers, and readers borrow and return books without physically visiting the library.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✨ Key Features
 
-## React Compiler
+## 📚 Reader-Centric Features (For the User)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Vast Book Catalog:**  
+  Access a comprehensive catalog of books from 12+ libraries spread across multiple cities within a single platform.
 
-## Expanding the ESLint configuration
+- **Doorstep Delivery & Pickup:**  
+  Seamless service allowing readers to receive their borrowed books at home and schedule hassle-free pickups for returns.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Real-Time Order Tracking:**  
+  Full visibility into the request lifecycle, allowing readers to track the real-time status (Pending, Out for Delivery, Delivered) of their orders.
+
+- **Smart Search & Filtering:**  
+  Advanced search functionality based on Title, Author, ISBN, or Library Location for quick discovery of books.
+
+## 🏦 Library Management Features (For Library Staff)
+
+- **Inventory Management System:**  
+  Tools for Library Staff to easily manage their stock count (stock_count), update book pricing (rental_rate_per_day), and maintain accurate book details.
+
+- **Request Dashboard:**  
+  A centralized dashboard to view incoming delivery and pickup requests, with the ability to Confirm or Reject orders efficiently.
+
+- **Courier Assignment:**  
+  Functionality to seamlessly assign confirmed delivery requests to available couriers based on geographic location.
+
+## 🏍️ Courier & Logistics Features (For Drivers)
+
+- **Assigned Task Tracking:**  
+  Couriers receive a clear list of assigned tasks (delivery/pickup) with necessary addresses and contact information.
+
+- **Easy Status Update:**  
+  Couriers can quickly update the order status (e.g., "Out for Delivery," "Delivered") through the app interface.
+
+- **Coverage Map View:**  
+  Visualization of the delivery zones and specific pickup/drop-off points to assist with efficient route planning.
+
+## ⚙️ Technical & Architectural Highlights
+
+- **Modern MERN Stack:**  
+  Built using Node.js, Express, React, and MongoDB, ensuring a scalable and flexible application structure.
+
+- **Efficient MongoDB Referencing:**  
+  Utilization of manual referencing (ObjectId) across the books, libraries, and users collections for fast and consistent data linking.
+
+- **Clean RESTful API Design:**  
+  Clear and well-documented API endpoints for reliable data exchange between the React frontend and the Express backend.
+
+## Tech Stack
+
+- **Frontend** : React.js
+- **Backend** : Node.js, Express.js
+- **Database** : MongoDB
+- **Authentication** : Firebase,JWT
+<!-- - **Deployment** : Vercel  -->
+
+## Dependencies
+
+- `axios`
+- `react-router`
+- `react-toastify`
+- `tailwindcss`
+- `tanstack/react-query`
+- `react-hook-form`
+- `react-leaflet`
+- `react-responsive-carousel`
+- `framer-motion`
+- `react-icons`
+- `firebase`
+
+## Installation
+
+Clone the repo and install dependencies
+
+```bash
+  git clone https://github.com/emon-ahmed-60/BookCourier-client.git
+  cd HomeHero-client
+  npm install
+```
+
+Set up environment variables by creating a .env file in the root directory:
+
+```bash
+  DATABASE_URL=your_database_url
+  Firebase_SECRET=your_firebase_secret
+```
+
+Run the application:
+
+```bash
+  npm run dev
+```
+
+## 🌐 Live URL
+
+<!-- live url     -->
