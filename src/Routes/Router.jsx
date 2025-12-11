@@ -8,6 +8,7 @@ import RequestDelivery from "../Pages/RequestDelivery";
 import Dashboard from "../Layouts/Dashboard";
 import MyOrders from "../Pages/MyOrders";
 import BookDetails from "../Components/BookDetails";
+import MyProfile from "../Pages/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -45,8 +46,12 @@ export const router = createBrowserRouter([
     Component:Dashboard,
     children:[
       {
-        index:true,
+        path:"my-orders",
         Component:MyOrders
+      },
+      {
+        path:"my-profile",
+        Component:MyProfile
       }
     ]
   }

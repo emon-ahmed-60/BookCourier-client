@@ -4,6 +4,7 @@ import UseAxios from "../Hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/UseAuth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const BookDetails = () => {
   const {
@@ -12,7 +13,7 @@ const BookDetails = () => {
     formState: { errors },
   } = useForm();
 
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const bookRef = useRef(null);
   const instance = UseAxios();
@@ -26,7 +27,9 @@ const BookDetails = () => {
     },
   });
 
-  if (isLoading) {
+  if (loading) {
+    return <div>Loading...</div>;
+  } else if (isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -47,7 +50,15 @@ const BookDetails = () => {
   };
 
   const handleAddOrder = (data) => {
-    console.log(data);
+    data.paymentStatus = "unpaid";
+    data.status = "pending";
+    data.date = new Date();
+    instance.post("/bookorders", data).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Order placed successfully");
+      }
+    });
+    bookRef.current.close();
   };
 
   return (
@@ -118,7 +129,7 @@ const BookDetails = () => {
                       type="number"
                       className="input"
                       placeholder="Your phone number"
-                      {...register("phone", { required: true , minLength : 11}, )}
+                      {...register("phone", { required: true, minLength: 11 })}
                     />
                     {errors.phone && (
                       <span className="text-red-500">
