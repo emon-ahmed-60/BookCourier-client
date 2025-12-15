@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import useAuth from "../Hooks/UseAuth";
 import { motion } from "framer-motion";
 const EachBook = ({ book }) => {
-  const { title, image_url, author, stock_count, _id } = book;
+  const { title, image_url, author, stock_count, _id , mrp_price} = book;
   const { theme } = useAuth();
   return (
     <motion.div
@@ -30,6 +30,7 @@ const EachBook = ({ book }) => {
         </p>
 
         <p className="font-semibold">author : {author}</p>
+        <p className="font-semibold">price : {mrp_price}</p>
 
         <div className="card-actions">
           <Link to={`/book-details/${_id}`} className="btn btn-primary w-full">

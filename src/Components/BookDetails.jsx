@@ -28,9 +28,9 @@ const BookDetails = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
   } else if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
   }
 
   const {
@@ -53,6 +53,7 @@ const BookDetails = () => {
     data.paymentStatus = "unpaid";
     data.status = "pending";
     data.date = new Date();
+    data.price = mrp_price
     instance.post("/bookorders", data).then((res) => {
       if (res.data.insertedId) {
         toast.success("Order placed successfully");

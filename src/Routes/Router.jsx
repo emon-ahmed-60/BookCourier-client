@@ -9,6 +9,9 @@ import Dashboard from "../Layouts/Dashboard";
 import MyOrders from "../Pages/MyOrders";
 import BookDetails from "../Components/BookDetails";
 import MyProfile from "../Pages/MyProfile";
+import PaymentFailed from "../Pages/PaymentFailed";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import Invoices from "../Pages/Invoices";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +55,18 @@ export const router = createBrowserRouter([
       {
         path:"my-profile",
         Component:MyProfile
+      },
+      {
+        path:"my-payments",
+        Component:Invoices
+      },
+      {
+        path:"payment-failed",
+        Component:PaymentFailed
+      },
+      {
+        path:"payment-success",
+        Component:PaymentSuccess
       }
     ]
   }

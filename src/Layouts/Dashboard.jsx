@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
+import { MdPayments } from "react-icons/md";
 
 const Dashboard = () => {
   return (
@@ -94,6 +95,16 @@ const Dashboard = () => {
                 >
                   <FaUserCircle />
                   <span className="is-drawer-close:hidden">My Profile</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My payments"
+                  to="/dashboard/my-payments"
+                >
+                  <MdPayments />
+                  <span className="is-drawer-close:hidden">My payments</span>
                 </NavLink>
               </li>
             </ul>

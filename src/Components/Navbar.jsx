@@ -40,13 +40,13 @@ const Navbar = () => {
         <NavLink to="/requestdelivery">Request Delivery</NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/my-orders">My Parcels</NavLink>
+        <NavLink to="/dashboard/my-orders">My Orders</NavLink>
       </li>
     </>
   );
 
   if(loading){
-    return <p>Loading.......</p>;
+    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
   }
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
