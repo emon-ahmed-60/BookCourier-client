@@ -3,8 +3,10 @@ import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
 import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import UseAxios from "../Hooks/UseAxios";
 
 const RegisterPage = () => {
+  const instance = UseAxios();
   const {
     register,
     handleSubmit,
@@ -16,13 +18,16 @@ const RegisterPage = () => {
   const handleRegister = (data) => {
     const { email, password } = data;
 
-    // const obj = { displayName, photoURL };
     createUser(email, password)
       .then((res) => {
+        instance.post("/users", data).then((res) => {
+          if (res.data.insertedId) {
+            toast.success("user created");
+          }
+        });
         updateUser(data)
           .then(() => {
             navigate("/");
-            toast.success("user created");
             setLoading(false);
           })
           .catch((err) => {
@@ -34,12 +39,21 @@ const RegisterPage = () => {
         toast.error(err.code);
         setLoading(false);
       });
-    
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((res) => {
+        const userInfo = {
+          displayName: res.user.displayName,
+          email: res.user.email,
+          photoURL: res.user.photoURL,
+        };
+        instance.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            toast.success("user created");
+          }
+        });
         navigate("/");
         toast.success("user created");
         setLoading(false);
