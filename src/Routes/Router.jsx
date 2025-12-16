@@ -14,6 +14,7 @@ import Invoices from "../Pages/Invoices";
 import PrivateRoute from "./PrivateRoute";
 import BeALibrarian from "../Pages/BeALibrarian";
 import ApproveLibrarian from "../Components/ApproveLibrarian";
+import AllUsers from "../Pages/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: 'approve-librarians',
         Component:ApproveLibrarian
+      },
+      {
+        path:"all-users",
+        Component:AllUsers
       },
     ],
   },

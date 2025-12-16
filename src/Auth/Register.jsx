@@ -22,7 +22,9 @@ const RegisterPage = () => {
       .then((res) => {
         instance.post("/users", data).then((res) => {
           if (res.data.insertedId) {
-            toast.success("user created");
+            toast.success("User created");
+          } else if (res.data.existingUserId) {
+
           }
         });
         updateUser(data)

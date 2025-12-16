@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaUsers } from "react-icons/fa";
 import { MdPayments } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 
@@ -116,6 +116,16 @@ const Dashboard = () => {
                 >
                   <IoLibrary />
                   <span className="is-drawer-close:hidden">All Librarians</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="All Users"
+                  to="/dashboard/all-users"
+                >
+                  <FaUsers />
+                  <span className="is-drawer-close:hidden">All Users</span>
                 </NavLink>
               </li>
             </ul>
