@@ -13,6 +13,7 @@ import PaymentSuccess from "../Pages/PaymentSuccess";
 import Invoices from "../Pages/Invoices";
 import PrivateRoute from "./PrivateRoute";
 import BeALibrarian from "../Pages/BeALibrarian";
+import ApproveLibrarian from "../Components/ApproveLibrarian";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "payment-success",
         Component: PaymentSuccess,
+      },
+      {
+        path: 'approve-librarians',
+        Component:ApproveLibrarian
       },
     ],
   },

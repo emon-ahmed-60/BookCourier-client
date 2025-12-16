@@ -1,6 +1,9 @@
 import { FaPaperPlane } from "react-icons/fa";
 import { MdOutlineLocalLibrary, MdOutlineTrendingUp } from "react-icons/md";
 import useAuth from "../Hooks/UseAuth";
+import { useForm } from "react-hook-form";
+import UseAxios from "../Hooks/UseAxios";
+import { toast } from "react-toastify";
 
 const BeALibrarian = () => {
   const { theme } = useAuth();
@@ -11,7 +14,7 @@ const BeALibrarian = () => {
 
   const benefits = [
     {
-      icon: <MdOutlineLocalLibrary size={30}  />,
+      icon: <MdOutlineLocalLibrary size={30} />,
       title: "Inventory Digitalization",
       description:
         "Easily add your entire book collection to a digital catalog and streamline your stock management.",
@@ -29,6 +32,22 @@ const BeALibrarian = () => {
         "Break geographical limits and reach a larger audience by offering convenient book delivery.",
     },
   ];
+
+  const instance = UseAxios();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleLibrarian = (data) => {
+    console.log(data);
+    instance.post("/librarians", data).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Your Application has been submitted");
+      }
+    });
+  };
 
   return (
     <div className={`py-12 ${baseBg}`}>
@@ -61,7 +80,6 @@ const BeALibrarian = () => {
           ))}
         </div>
 
-        {/* --- Section 2: Application Form --- */}
         <div
           className={`max-w-xl mx-auto p-8 rounded-xl shadow-2xl border-t-4 bg-${cardBg} border-primary`}
         >
@@ -69,75 +87,64 @@ const BeALibrarian = () => {
             Apply to Be a Library Partner
           </h2>
 
-          <form>
-            {/* 1. Library Name */}
+          <form onSubmit={handleSubmit(handleLibrarian)}>
             <div className="mb-4">
               <label
-                htmlFor="libraryName"
                 className={`block text-sm font-medium mb-1 ${textSecondary}`}
               >
                 Library Name
               </label>
               <input
                 type="text"
-                id="libraryName"
+                {...register("libraryName", { required: true })}
                 required
                 placeholder="E.g., Central Public Library"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 ${textPrimary}`}
               />
             </div>
 
-            {/* 2. City Name */}
             <div className="mb-4">
               <label
-                htmlFor="city"
                 className={`block text-sm font-medium mb-1 ${textSecondary}`}
               >
                 City (Service Location)
               </label>
               <input
                 type="text"
-                id="city"
-                required
+                {...register("city", { required: true })}
                 placeholder="E.g., Dhaka, Chittagong, etc."
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 ${textPrimary}`}
               />
             </div>
 
-            {/* 3. Contact Email */}
             <div className="mb-4">
               <label
-                htmlFor="contactEmail"
                 className={`block text-sm font-medium mb-1 ${textSecondary}`}
               >
                 Contact Email
               </label>
               <input
                 type="email"
-                id="contactEmail"
-                required
+                {...register("contactEmail", { required: true })}
                 placeholder="library@example.com"
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 ${textPrimary}`}
               />
             </div>
 
-            {/* 4. Message Box */}
             <div className="mb-6">
               <label
-                htmlFor="message"
                 className={`block text-sm font-medium mb-1 ${textSecondary}`}
               >
                 Additional Information (Optional)
               </label>
               <textarea
-                id="message"
+                {...register("message")}
                 rows="3"
                 placeholder="Tell us a little about your library..."
                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 ${textPrimary}`}
               ></textarea>
             </div>
 
-            {/* 5. Submit Button */}
             <button
               type="submit"
               className="w-full py-3 rounded-lg text-white font-semibold transition duration-300 hover:opacity-90 bg-primary"
