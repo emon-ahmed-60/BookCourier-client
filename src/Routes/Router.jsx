@@ -16,6 +16,8 @@ import BeALibrarian from "../Pages/BeALibrarian";
 import ApproveLibrarian from "../Components/ApproveLibrarian";
 import AllUsers from "../Pages/AllUsers";
 import MyWishList from "../Pages/MyWishList";
+import AddBooks from "../Pages/AddBooks";
+import MyBooks from "../Pages/MyBooks";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +69,10 @@ export const router = createBrowserRouter([
         Component: MyOrders,
       },
       {
+        path:'add-book',
+        Component:AddBooks
+      },
+      {
         path:'my-wishlist',
         Component:MyWishList
       },
@@ -89,6 +95,10 @@ export const router = createBrowserRouter([
       {
         path: 'approve-librarians',
         Component:ApproveLibrarian
+      },
+      {
+        path:"my-books",
+        Component:MyBooks
       },
       {
         path:"all-users",

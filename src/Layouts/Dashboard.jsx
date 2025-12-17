@@ -2,9 +2,10 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { FaUserCircle, FaUsers } from "react-icons/fa";
+import { FaBookReader, FaUserCircle, FaUsers } from "react-icons/fa";
 import { MdOutlineFavorite, MdPayments } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
+import { BiBookAdd } from "react-icons/bi";
 
 const Dashboard = () => {
   return (
@@ -136,6 +137,26 @@ const Dashboard = () => {
                 >
                   <FaUsers />
                   <span className="is-drawer-close:hidden">All Users</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Add Book"
+                  to="/dashboard/add-book"
+                >
+                  <BiBookAdd />
+                  <span className="is-drawer-close:hidden">Add Book</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My Books"
+                  to="/dashboard/my-books"
+                >
+                  <FaBookReader />
+                  <span className="is-drawer-close:hidden">My Books</span>
                 </NavLink>
               </li>
             </ul>
