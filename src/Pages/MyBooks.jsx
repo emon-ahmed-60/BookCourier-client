@@ -43,7 +43,7 @@ const MyBooks = () => {
       <h2>All of my orders {myBooks.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
-          {/* head */}
+  
           <thead>
             <tr>
               <th></th>
@@ -97,7 +97,7 @@ const MyBooks = () => {
               </h1>
               <form onSubmit={handleSubmit(handleEditBook)}>
                 <fieldset className="fieldset">
-                  {/* Name field */}
+                 
                   <label className="label">Book Name</label>
                   <input
                     type="text"
@@ -107,7 +107,6 @@ const MyBooks = () => {
                     readOnly
                   />
 
-                  {/* Photo URL field  */}
                   <label className="label">Book Image URL</label>
 
                   <input
@@ -118,7 +117,6 @@ const MyBooks = () => {
                     readOnly
                   />
 
-                  {/* Book Author  */}
                   <label className="label">Book Author</label>
                   <input
                     type="text"
@@ -128,7 +126,6 @@ const MyBooks = () => {
                     readOnly
                   />
 
-                  {/* Book Status  */}
                   <label className="label">Book Status</label>
                   <select
                     {...register("bookStatus")}
@@ -139,7 +136,6 @@ const MyBooks = () => {
                     <option>unpublished</option>
                   </select>
 
-                  {/* Price field  */}
                   <label className="label">Book Price</label>
                   <input
                     type="number"

@@ -73,7 +73,6 @@ const MyOrders = () => {
       <h2>All of my orders {myOrders.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
-          {/* head */}
           <thead>
             <tr>
               <th></th>

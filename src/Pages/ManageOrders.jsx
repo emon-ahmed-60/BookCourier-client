@@ -12,7 +12,6 @@ const ManageOrders = () => {
   const { user } = useAuth();
   const bookRef = useRef(null);
   const { register, handleSubmit } = useForm();
-  // instance.get(`/`)
   const {
     data: Orders = [],
     isLoading,
@@ -46,7 +45,7 @@ const ManageOrders = () => {
       <h2>All of my orders {Orders.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
-          {/* head */}
+
           <thead>
             <tr>
               <th></th>

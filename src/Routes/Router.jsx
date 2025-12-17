@@ -19,6 +19,8 @@ import MyWishList from "../Pages/MyWishList";
 import AddBooks from "../Pages/AddBooks";
 import MyBooks from "../Pages/MyBooks";
 import ManageOrders from "../Pages/ManageOrders";
+import AdminRote from "./AdminRote";
+import AdminProfile from "../Pages/AdminProfile";
 
 export const router = createBrowserRouter([
   {
@@ -70,12 +72,12 @@ export const router = createBrowserRouter([
         Component: MyOrders,
       },
       {
-        path:'add-book',
-        Component:AddBooks
+        path: "add-book",
+        Component: AddBooks,
       },
       {
-        path:'my-wishlist',
-        Component:MyWishList
+        path: "my-wishlist",
+        Component: MyWishList,
       },
       {
         path: "my-profile",
@@ -93,21 +95,38 @@ export const router = createBrowserRouter([
         path: "payment-success",
         Component: PaymentSuccess,
       },
+
       {
-        path: 'approve-librarians',
-        Component:ApproveLibrarian
+        path: "my-books",
+        Component: MyBooks,
       },
       {
-        path:"my-books",
-        Component:MyBooks
+        path: "manage-orders",
+        Component: ManageOrders,
       },
       {
-        path:'manage-orders',
-        Component: ManageOrders
+        path: "approve-librarians",
+        element: (
+          <AdminRote>
+            <ApproveLibrarian />
+          </AdminRote>
+        ),
       },
       {
-        path:"all-users",
-        Component:AllUsers
+        path: "admin-profile",
+        element: (
+          <AdminRote>
+            <AdminProfile />
+          </AdminRote>
+        ),
+      },
+      {
+        path: "all-users",
+        element: (
+          <AdminRote>
+            <AllUsers />
+          </AdminRote>
+        ),
       },
     ],
   },

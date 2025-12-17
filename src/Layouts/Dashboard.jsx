@@ -6,8 +6,13 @@ import { FaBookReader, FaUserCircle, FaUsers } from "react-icons/fa";
 import { MdOutlineFavorite, MdPayments } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 import { BiBookAdd } from "react-icons/bi";
+import UseRole from "../Hooks/UseRole";
 
 const Dashboard = () => {
+  const { role, isLoading } = UseRole();
+
+  const currentRole = typeof role === "object" ? role?.role : role;
+
   return (
     <div>
       <div className="drawer lg:drawer-open mx-auto">
@@ -20,7 +25,6 @@ const Dashboard = () => {
               aria-label="open sidebar"
               className="btn btn-square btn-ghost"
             >
-              {/* Sidebar toggle icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -36,29 +40,27 @@ const Dashboard = () => {
                 <path d="M14 10l2 2l-2 2"></path>
               </svg>
             </label>
-            <div className="px-4">Dashboard</div>
+
+            <div className="px-4 font-bold uppercase">
+              Dashboard - {currentRole}
+            </div>
           </nav>
-          {/* Page content here */}
-          <Outlet></Outlet>
+
+          <div className="p-5">
+            <Outlet></Outlet>
+          </div>
         </div>
 
         <div className="drawer-side is-drawer-close:overflow-visible">
-          <label
-            htmlFor="my-drawer-4"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          ></label>
+          <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
           <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-            {/* Sidebar content here */}
-            <ul className="menu w-full grow">
-              {/* List item */}
+            <ul className="menu w-full grow p-4 space-y-2">
               <li>
                 <Link
                   to="/"
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="Homepage"
                 >
-                  {/* Home icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -76,101 +78,110 @@ const Dashboard = () => {
                 </Link>
               </li>
 
-              {/* our dashboard links */}
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="My Orders"
-                  to="/dashboard/my-orders"
-                >
-                  <CiDeliveryTruck />
-                  <span className="is-drawer-close:hidden">My Orders</span>
-                </NavLink>
-              </li>
+              <div className="divider"></div>
 
-              {/* List item */}
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="My Profile"
-                  to="/dashboard/my-profile"
-                >
-                  <FaUserCircle />
-                  <span className="is-drawer-close:hidden">My Profile</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="My payments"
-                  to="/dashboard/my-payments"
-                >
-                  <MdPayments />
-                  <span className="is-drawer-close:hidden">My payments</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="My wishlist"
-                  to="/dashboard/my-wishlist"
-                >
-                  <MdOutlineFavorite />
-                  <span className="is-drawer-close:hidden">My Wishlist</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="All Librarians"
-                  to="/dashboard/approve-librarians"
-                >
-                  <IoLibrary />
-                  <span className="is-drawer-close:hidden">All Librarians</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="All Users"
-                  to="/dashboard/all-users"
-                >
-                  <FaUsers />
-                  <span className="is-drawer-close:hidden">All Users</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Add Book"
-                  to="/dashboard/add-book"
-                >
-                  <BiBookAdd />
-                  <span className="is-drawer-close:hidden">Add Book</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="My Books"
-                  to="/dashboard/my-books"
-                >
-                  <FaBookReader />
-                  <span className="is-drawer-close:hidden">My Books</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Manage Orders"
-                  to="/dashboard/manage-orders"
-                >
-                  <CiDeliveryTruck />
-                  <span className="is-drawer-close:hidden">
-                    Manage Orders
-                  </span>
-                </NavLink>
-              </li>
+              {isLoading ? (
+                <div className="flex justify-center w-full py-4">
+                  <span className="loading loading-spinner loading-md"></span>
+                </div>
+              ) : (
+                <>
+                  {currentRole === "user" && (
+                    <>
+                      <li>
+                        <NavLink to="/dashboard/my-orders">
+                          <CiDeliveryTruck size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Orders
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/my-wishlist">
+                          <MdOutlineFavorite size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Wishlist
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/my-profile">
+                          <FaUserCircle size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Profile
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/my-payments">
+                          <MdPayments size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Payments
+                          </span>
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+
+                  {currentRole === "librarian" && (
+                    <>
+                      <li>
+                        <NavLink to="/dashboard/add-book">
+                          <BiBookAdd size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            Add Book
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/my-books">
+                          <FaBookReader size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Books
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/manage-orders">
+                          <CiDeliveryTruck size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            Manage Orders
+                          </span>
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+
+                  {currentRole === "admin" && (
+                    <>
+                      <li>
+                        <NavLink to="/dashboard/approve-librarians">
+                          <IoLibrary size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            All Librarians
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/all-users">
+                          <FaUsers size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            All Users
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/admin-profile">
+                          <FaUserCircle size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            My Profile
+                          </span>
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+                </>
+              )}
             </ul>
           </div>
         </div>

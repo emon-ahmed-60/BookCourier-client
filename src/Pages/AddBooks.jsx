@@ -31,7 +31,6 @@ const AddBooks = () => {
         </h1>
         <form onSubmit={handleSubmit(handleAddBook)}>
           <fieldset className="fieldset">
-            {/* Name field */}
             <label className="label">Book Name</label>
             <input
               type="text"
@@ -42,7 +41,6 @@ const AddBooks = () => {
             {errors.title && (
               <p className="text-red-500">Please Add Book Name</p>
             )}
-            {/* Photo URL field  */}
             <label className="label">Book Image URL</label>
 
             <input
@@ -54,7 +52,6 @@ const AddBooks = () => {
             {errors.image_url && (
               <p className="text-red-500">Add Book Image URL</p>
             )}
-            {/* Book Author  */}
             <label className="label">Book Author</label>
             <input
               type="text"
@@ -65,7 +62,6 @@ const AddBooks = () => {
             {errors.author && (
               <p className="text-red-500">Add Book author Name</p>
             )}
-            {/* Book Status  */}
             <label className="label">Book Status</label>
             <select
               {...register("bookStatus", { required: true })}
@@ -78,7 +74,6 @@ const AddBooks = () => {
             {errors.bookStatus && (
               <p className="text-red-500">Select Book Status</p>
             )}
-            {/* Price field  */}
             <label className="label">Book Price</label>
             <input
               type="number"

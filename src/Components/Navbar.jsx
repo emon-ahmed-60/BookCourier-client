@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
 import useAuth from "../Hooks/UseAuth";
+import UseRole from "../Hooks/UseRole";
 
 const Navbar = () => {
   const { user, logOut, loading, setLoading, setTheme, theme } = useAuth();
+  const { role } = UseRole();
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -40,13 +42,27 @@ const Navbar = () => {
         <NavLink to="/request-librarian">Be A Librarian</NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/my-orders">Dashboard</NavLink>
+        <NavLink
+          to={`${
+            role.role === "user"
+              ? "/dashboard/my-orders"
+              : role.role === "librarian"
+              ? "/dashboard/manage-orders"
+              : "/dashboard/all-users"
+          }`}
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
 
-  if(loading){
-    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
+  if (loading) {
+    return (
+      <div className="text-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
   }
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
@@ -124,20 +140,19 @@ const Navbar = () => {
           {user ? (
             <div className="flex items-center gap-4">
               {/* .......... */}
-              
+
               <div className="dropdown hover:dropdown-hover dropdown-left">
                 <div tabIndex={0} role="button" className="cursor-pointer">
-               
-                {user?.photoURL ? (
-                  <img
-                    src={user?.photoURL}
-                    alt="user profile"
-                    className="w-12 h-12 rounded-full"
-                  />
-                ) : (
-                  <FaUserCircle className="w-12 h-12 rounded-full" />
-                )}
-              </div>
+                  {user?.photoURL ? (
+                    <img
+                      src={user?.photoURL}
+                      alt="user profile"
+                      className="w-12 h-12 rounded-full"
+                    />
+                  ) : (
+                    <FaUserCircle className="w-12 h-12 rounded-full" />
+                  )}
+                </div>
                 <ul
                   tabIndex="-1"
                   className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm"
@@ -189,8 +204,7 @@ const Navbar = () => {
                   </button>
                 </ul>
               </div>
-            </div> 
-           
+            </div>
           ) : (
             <>
               <div className="hidden md:block">

@@ -21,16 +21,18 @@ const ApproveLibrarian = () => {
 
   const updateLibrarianStatus = (librarian, status) => {
     const updateLibrarian = { status: status, email: librarian.contactEmail };
-    instance.patch(`/librarian/${librarian._id}`, updateLibrarian).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
-        Swal.fire({
-          title: status,
-          text: `Your status sent to ${status}.`,
-          icon: "success",
-        });
-      }
-    });
+    instance
+      .patch(`/librarian/${librarian._id}`, updateLibrarian)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            title: status,
+            text: `Your status sent to ${status}.`,
+            icon: "success",
+          });
+        }
+      });
   };
 
   const handleAddLibrarian = (librarian) => {
@@ -43,7 +45,6 @@ const ApproveLibrarian = () => {
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra">
-        {/* head */}
         <thead>
           <tr>
             <th></th>

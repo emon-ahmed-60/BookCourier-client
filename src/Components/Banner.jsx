@@ -45,7 +45,6 @@ const Banner = () => {
           <div className="w-full max-w-6xl mx-auto">
             <section className="rounded-lg shadow-lg overflow-hidden">
               <div className="flex flex-col-reverse md:flex-row items-center">
-                {/* Text Content */}
                 <div className="w-full md:w-1/2 p-2 md:p-8 lg:p-12 text-center md:text-left">
                   <h1 className="text-xl lg:text-2xl font-bold leading-tight">
                     The Pages of Legacy: World of Classic Literature
@@ -59,7 +58,6 @@ const Banner = () => {
                     Explore All Books
                   </Link>
                 </div>
-                {/* Image */}
                 <div className="w-full md:w-1/2">
                   <img
                     alt="A collection of three neatly folded t-shirts in white, grey, and black, next to a pair of white sneakers."
@@ -77,7 +75,6 @@ const Banner = () => {
           <div className="w-full max-w-6xl mx-auto">
             <section className="rounded-lg shadow-lg overflow-hidden">
               <div className="flex flex-col-reverse md:flex-row items-center">
-                {/* Text Content */}
                 <div className="w-full md:w-1/2 p-2 md:p-8 lg:p-12 text-center md:text-left">
                   <h1 className="text-xl lg:text-2xl font-bold leading-tight">
                     Knowledge Quest: Frontiers of Science & Research
@@ -91,7 +88,6 @@ const Banner = () => {
                     Explore All Books
                   </Link>
                 </div>
-                {/* Image */}
                 <div className="w-full md:w-1/2">
                   <img
                     alt="A collection of three neatly folded t-shirts in white, grey, and black, next to a pair of white sneakers."
@@ -109,7 +105,6 @@ const Banner = () => {
           <div className="w-full max-w-6xl mx-auto">
             <section className="rounded-lg shadow-lg overflow-hidden">
               <div className="flex flex-col-reverse md:flex-row items-center">
-                {/* Text Content */}
                 <div className="w-full md:w-1/2 p-2 md:p-8 lg:p-12 text-center md:text-left">
                   <h1 className="text-xl lg:text-2xl font-bold leading-tight">
                     Mind Fuel: Bestseller Fiction & Thrillers
@@ -123,7 +118,6 @@ const Banner = () => {
                     Explore All Books
                   </Link>
                 </div>
-                {/* Image */}
                 <div className="w-full md:w-1/2">
                   <img
                     alt="A collection of three neatly folded t-shirts in white, grey, and black, next to a pair of white sneakers."

@@ -6,7 +6,7 @@ import UseAxios from "../Hooks/UseAxios";
 import { toast } from "react-toastify";
 
 const BeALibrarian = () => {
-  const { theme , user} = useAuth();
+  const { theme, user } = useAuth();
   const baseBg = theme === "light" ? "bg-gray-50" : "bg-gray-900";
   const cardBg = theme === "light" ? "bg-white" : "bg-gray-800";
   const textPrimary = theme === "light" ? "text-gray-900" : "text-gray-100";
@@ -41,7 +41,6 @@ const BeALibrarian = () => {
   } = useForm();
 
   const handleLibrarian = (data) => {
-  
     instance.post("/librarians", data).then((res) => {
       if (res.data.insertedId) {
         toast.success("Your Application has been submitted");

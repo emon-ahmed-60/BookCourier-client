@@ -59,7 +59,9 @@ const Books = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {isLoading ? (
-          <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>
+          <div className="text-center">
+            <span className="loading loading-dots loading-xl"></span>
+          </div>
         ) : (
           books.map((book) => <EachBook key={book._id} book={book} />)
         )}

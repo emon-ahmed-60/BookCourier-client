@@ -7,15 +7,17 @@ import { SiLibrarything } from "react-icons/si";
 import { FaUser } from "react-icons/fa";
 
 import Swal from "sweetalert2";
+import useAuth from "../Hooks/UseAuth";
 
 const AllUsers = () => {
   const instance = UseAxios();
+  const {user} = useAuth()
   const {
     data: users = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", "user"],
+    queryKey: ["users", user?.email],
     queryFn: async () => {
       const res = await instance.get("/users");
       return res.data;
@@ -78,7 +80,7 @@ const AllUsers = () => {
   };
 
   const handleRemoveLibrarian = (user) => {
-    const roleInfo = { role: "librarian" };
+    const roleInfo = { role: "user" };
     Swal.fire({
       title: "Are you sure?",
       text: `You want ${user.displayName} remove as an librarian`,
@@ -134,7 +136,6 @@ const AllUsers = () => {
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra">
-        {/* head */}
         <thead>
           <tr>
             <th></th>
