@@ -18,6 +18,7 @@ import AllUsers from "../Pages/AllUsers";
 import MyWishList from "../Pages/MyWishList";
 import AddBooks from "../Pages/AddBooks";
 import MyBooks from "../Pages/MyBooks";
+import ManageOrders from "../Pages/ManageOrders";
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
       {
         path:"my-books",
         Component:MyBooks
+      },
+      {
+        path:'manage-orders',
+        Component: ManageOrders
       },
       {
         path:"all-users",

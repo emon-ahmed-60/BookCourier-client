@@ -159,6 +159,18 @@ const Dashboard = () => {
                   <span className="is-drawer-close:hidden">My Books</span>
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Manage Orders"
+                  to="/dashboard/manage-orders"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">
+                    Manage Orders
+                  </span>
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

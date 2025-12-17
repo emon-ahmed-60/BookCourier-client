@@ -3,6 +3,9 @@ import UseAxios from "../Hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
 import { FaUserShield } from "react-icons/fa";
 import { FiShieldOff } from "react-icons/fi";
+import { SiLibrarything } from "react-icons/si";
+import { FaUser } from "react-icons/fa";
+
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
@@ -46,7 +49,61 @@ const AllUsers = () => {
       }
     });
   };
+  const handleMakeLibrarian = (user) => {
+    const roleInfo = { role: "librarian" };
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You want ${user.displayName} mark as an librarian`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I Can",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        instance.patch(`/users/${user._id}`, roleInfo).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${user.displayName} mark as an librarian`,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          }
+        });
+      }
+    });
+  };
 
+  const handleRemoveLibrarian = (user) => {
+    const roleInfo = { role: "librarian" };
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You want ${user.displayName} remove as an librarian`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I Can",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        instance.patch(`/users/${user._id}`, roleInfo).then((res) => {
+          if (res.data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${user.displayName} remove as an librarian`,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          }
+        });
+      }
+    });
+  };
   const handleRemoveAdmin = (user) => {
     const roleInfo = { role: "user" };
     Swal.fire({
@@ -85,7 +142,7 @@ const AllUsers = () => {
             <th className="text-center">email</th>
             <th className="text-center">Role</th>
             <th className="text-center">Admin Actions</th>
-            <th className="text-center">Other Actions</th>
+            <th className="text-center">Librarian Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -117,6 +174,23 @@ const AllUsers = () => {
                         className="btn btn-primary"
                       >
                         <FaUserShield />
+                      </button>
+                    )}
+                  </td>
+                  <td className="text-center">
+                    {user.role === "librarian" ? (
+                      <button
+                        onClick={() => handleRemoveLibrarian(user)}
+                        className="btn bg-red-300"
+                      >
+                        <FaUser />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeLibrarian(user)}
+                        className="btn btn-primary"
+                      >
+                        <SiLibrarything />
                       </button>
                     )}
                   </td>

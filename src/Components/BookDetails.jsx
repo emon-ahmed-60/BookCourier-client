@@ -65,6 +65,7 @@ const BookDetails = () => {
     image_url,
     added_at,
     mrp_price,
+    email
   } = book || {};
 
   const handleOrderNow = () => {
@@ -85,6 +86,7 @@ const BookDetails = () => {
 
   const handleAddOrder = (data) => {
     data.paymentStatus = "unpaid";
+    data.librarianEmail = email;
     data.status = "pending";
     data.date = new Date();
     data.price = mrp_price;
