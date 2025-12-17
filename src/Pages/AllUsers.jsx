@@ -11,7 +11,7 @@ import useAuth from "../Hooks/UseAuth";
 
 const AllUsers = () => {
   const instance = UseAxios();
-  const {user} = useAuth()
+  const { user } = useAuth();
   const {
     data: users = [],
     isLoading,

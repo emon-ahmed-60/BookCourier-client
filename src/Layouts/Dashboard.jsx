@@ -7,6 +7,7 @@ import { MdOutlineFavorite, MdPayments } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 import { BiBookAdd } from "react-icons/bi";
 import UseRole from "../Hooks/UseRole";
+import { SiBookstack } from "react-icons/si";
 
 const Dashboard = () => {
   const { role, isLoading } = UseRole();
@@ -167,6 +168,14 @@ const Dashboard = () => {
                           <FaUsers size={20} />{" "}
                           <span className="is-drawer-close:hidden">
                             All Users
+                          </span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/manage-books">
+                          <SiBookstack size={20} />{" "}
+                          <span className="is-drawer-close:hidden">
+                            Manage Books
                           </span>
                         </NavLink>
                       </li>

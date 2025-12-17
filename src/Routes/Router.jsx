@@ -21,6 +21,7 @@ import MyBooks from "../Pages/MyBooks";
 import ManageOrders from "../Pages/ManageOrders";
 import AdminRote from "./AdminRote";
 import AdminProfile from "../Pages/AdminProfile";
+import ManageBooks from "../Pages/ManageBooks";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +55,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/book-details/:id",
-        Component: BookDetails,
+        element: (
+          <PrivateRoute>
+            <BookDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -117,6 +122,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRote>
             <AdminProfile />
+          </AdminRote>
+        ),
+      },
+      {
+        path: "manage-books",
+        element: (
+          <AdminRote>
+            <ManageBooks />
           </AdminRote>
         ),
       },
