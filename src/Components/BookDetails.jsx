@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
-import { useParams } from "react-router";
+import { data, useParams } from "react-router";
 import UseAxios from "../Hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/UseAuth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const {
@@ -28,9 +29,17 @@ const BookDetails = () => {
   });
 
   if (loading) {
-    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
+    return (
+      <div className="text-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
   } else if (isLoading) {
-    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
+    return (
+      <div className="text-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
   }
 
   const {
@@ -53,13 +62,25 @@ const BookDetails = () => {
     data.paymentStatus = "unpaid";
     data.status = "pending";
     data.date = new Date();
-    data.price = mrp_price
+    data.price = mrp_price;
     instance.post("/bookorders", data).then((res) => {
       if (res.data.insertedId) {
         toast.success("Order placed successfully");
       }
     });
     bookRef.current.close();
+  };
+
+  const handleWishlist = () => {
+    instance.post(`/wishlist?email=${user?.email}`, book).then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "This Book Add Your Wishlists Page",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
   };
 
   return (
@@ -89,6 +110,9 @@ const BookDetails = () => {
           </p>
           <button onClick={handleOrderNow} className="btn btn-primary">
             ORDER NOW
+          </button>
+          <button onClick={handleWishlist} className="btn btn-neutral">
+            Add Wishlist
           </button>
         </div>
 

@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaUserCircle, FaUsers } from "react-icons/fa";
-import { MdPayments } from "react-icons/md";
+import { MdOutlineFavorite, MdPayments } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 
 const Dashboard = () => {
@@ -106,6 +106,16 @@ const Dashboard = () => {
                 >
                   <MdPayments />
                   <span className="is-drawer-close:hidden">My payments</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My wishlist"
+                  to="/dashboard/my-wishlist"
+                >
+                  <MdOutlineFavorite />
+                  <span className="is-drawer-close:hidden">My Wishlist</span>
                 </NavLink>
               </li>
               <li>

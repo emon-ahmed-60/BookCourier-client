@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import BeALibrarian from "../Pages/BeALibrarian";
 import ApproveLibrarian from "../Components/ApproveLibrarian";
 import AllUsers from "../Pages/AllUsers";
+import MyWishList from "../Pages/MyWishList";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: "my-orders",
         Component: MyOrders,
+      },
+      {
+        path:'my-wishlist',
+        Component:MyWishList
       },
       {
         path: "my-profile",
