@@ -22,6 +22,7 @@ import ManageOrders from "../Pages/ManageOrders";
 import AdminRote from "./AdminRote";
 import AdminProfile from "../Pages/AdminProfile";
 import ManageBooks from "../Pages/ManageBooks";
+import LibrarianRoute from "./LibrarianRoute";
 
 export const router = createBrowserRouter([
   {
@@ -77,10 +78,6 @@ export const router = createBrowserRouter([
         Component: MyOrders,
       },
       {
-        path: "add-book",
-        Component: AddBooks,
-      },
-      {
         path: "my-wishlist",
         Component: MyWishList,
       },
@@ -100,14 +97,29 @@ export const router = createBrowserRouter([
         path: "payment-success",
         Component: PaymentSuccess,
       },
-
+      {
+        path: "add-book",
+        element: (
+          <LibrarianRoute>
+            <AddBooks />
+          </LibrarianRoute>
+        ),
+      },
       {
         path: "my-books",
-        Component: MyBooks,
+        element: (
+          <LibrarianRoute>
+            <MyBooks />
+          </LibrarianRoute>
+        ),
       },
       {
         path: "manage-orders",
-        Component: ManageOrders,
+        element: (
+          <LibrarianRoute>
+            <ManageOrders />
+          </LibrarianRoute>
+        ),
       },
       {
         path: "approve-librarians",

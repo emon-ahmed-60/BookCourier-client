@@ -38,9 +38,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/books">All Books</NavLink>
       </li>
-      <li>
-        <NavLink to="/request-librarian">Be A Librarian</NavLink>
-      </li>
+      {role.role === "user"  && user && (
+        <li>
+          <NavLink to="/request-librarian">Be A Librarian</NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to={`${

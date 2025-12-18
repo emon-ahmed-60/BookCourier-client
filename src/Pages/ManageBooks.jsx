@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ManageBooks = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -40,9 +41,31 @@ const ManageBooks = () => {
     });
   };
 
-  const handleDelete = book => {
-    console.log(book);
-  }
+  const handleDelete = (book) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this book",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        instance.delete(`/book/${book._id}`).then((res) => {
+          if (res.data.deletedCount) {
+            refetch();
+            console.log(res.data);
+            Swal.fire({
+              title: "Deleted!",
+              text: "This book has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <>
       <h2>{books.length} Books Available</h2>
@@ -73,9 +96,7 @@ const ManageBooks = () => {
                     <td className="text-center">{idx + 1}</td>
                     <td className="text-center">{book.title}</td>
                     <td className="text-center">{book.added_at}</td>
-                    <td className="text-center">
-                      {book.bookStatus}
-                    </td>
+                    <td className="text-center">{book.bookStatus}</td>
                     <td className="text-center">{book.mrp_price}</td>
                     <td className="text-center">
                       {" "}
