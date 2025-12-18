@@ -65,7 +65,7 @@ const MyOrders = () => {
     };
 
     const res = await instance.post("/create-checkout-session", paymentInfo);
-    console.log(res.data);
+
     window.location.href = res.data.url;
   };
   return (

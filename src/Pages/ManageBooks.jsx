@@ -31,7 +31,6 @@ const ManageBooks = () => {
   };
 
   const handleEditBook = (data) => {
-    console.log(data, selectedOrder._id);
     instance.patch(`/all-book/${selectedOrder._id}`, data).then((res) => {
       if (res.data.modifiedCount) {
         toast.success(`Book is ${data.bookStatus} successfully`);
@@ -55,7 +54,6 @@ const ManageBooks = () => {
         instance.delete(`/book/${book._id}`).then((res) => {
           if (res.data.deletedBook?.deletedCount) {
             refetch();
-            console.log(res.data);
             Swal.fire({
               title: "Deleted!",
               text: "This book has been deleted.",

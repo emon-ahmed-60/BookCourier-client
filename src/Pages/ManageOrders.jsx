@@ -30,7 +30,6 @@ const ManageOrders = () => {
   };
 
   const handleEditOrder = (data) => {
-    console.log(data, selectedOrder._id);
     const update = data;
     instance.patch(`/book-update/${selectedOrder._id}`, data).then((res) => {
       if (res.data.modifiedCount) {
