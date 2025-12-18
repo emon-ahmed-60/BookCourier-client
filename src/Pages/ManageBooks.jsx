@@ -53,7 +53,7 @@ const ManageBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         instance.delete(`/book/${book._id}`).then((res) => {
-          if (res.data.deletedCount) {
+          if (res.data.deletedBook?.deletedCount) {
             refetch();
             console.log(res.data);
             Swal.fire({
