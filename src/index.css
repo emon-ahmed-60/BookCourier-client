@@ -18,6 +18,16 @@ body {
   overflow-x: hidden;
 }
 
+.latest-books {
+  overflow-x: auto;
+  scrollbar-width: none;     
+}
+
+.latest-books::-webkit-scrollbar {
+  display: none;         
+}
+
+
 
 .menu a.active {
   @apply text-primary underline;
