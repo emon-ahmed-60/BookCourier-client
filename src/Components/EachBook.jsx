@@ -23,7 +23,7 @@ const EachBook = ({ book }) => {
         <img src={image_url} alt="book" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-neutral">{title}</h2>
+        <h2 className="card-title">{title}</h2>
 
         <p className="font-semibold">
           stock_count: <span className="text-accent">{stock_count}</span>{" "}

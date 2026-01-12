@@ -17,12 +17,16 @@ const Coverage = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center"><span className="loading loading-dots loading-xl"></span></div>;
+    return (
+      <div className="text-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
   }
 
   return (
     <div>
-      <h1 className="text-4xl font-extrabold text-neutral mb-12 text-center">
+      <h1 className="text-4xl font-extrabold mb-12 text-center">
         {" "}
         All The Available Cities
       </h1>
@@ -37,7 +41,7 @@ const Coverage = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {libraries.map((library) => (
+          {libraries?.map((library) => (
             <Marker
               key={library._id}
               position={[
