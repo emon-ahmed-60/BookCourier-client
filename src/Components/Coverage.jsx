@@ -1,4 +1,17 @@
 import React from "react";
+import L from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import UseAxios from "../Hooks/UseAxios";
@@ -32,7 +45,7 @@ const Coverage = () => {
       </h1>
       <div className="h-[800px] w-full">
         <MapContainer
-          className="h-[800px] w-full"
+          className="h-[800px] w-full z-1!"
           center={position}
           zoom={8}
           scrollWheelZoom={false}

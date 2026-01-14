@@ -100,4 +100,4 @@ Run the application:
 
 ## 🌐 Live URL
 
-https://bookcourier-5924d.web.app
+https://bookcourier-5924d.web.app/
