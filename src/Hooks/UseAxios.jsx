@@ -4,7 +4,7 @@ import useAuth from "./UseAuth";
 import { useNavigate } from "react-router";
 
 const instance = axios.create({
-  baseURL: "https://book-courier-server-phi.vercel.app",
+  baseURL: "https://bookcourier-rouge.vercel.app",
 });
 
 const UseAxios = () => {
